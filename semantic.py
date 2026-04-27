@@ -71,7 +71,7 @@ class SemanticAnalyzer:
     def _handle_decl(self, node: ParseNode):
         dtype = node.children[0].value
         name  = node.children[1].value
-        line  = 0   # line info not propagated to tree; acceptable for lab
+        line  = 0   # line info not propagated to tree; 
         self.symbol_table.declare(name, dtype, line)
         # visit rest (initializer expression)
         for child in node.children[2:]:
