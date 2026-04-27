@@ -5,8 +5,6 @@
 
 from __future__ import annotations
 import re
-
-# ── Token types ──────────────────────────────────────────────
 TOKEN_TYPES = [
     ('KEYWORD',   r'\b(int|float|if|else|while|return|print)\b'),
     ('FLOAT',     r'\b\d+\.\d+\b'),
@@ -29,7 +27,6 @@ TOKEN_TYPES = [
     ('MISMATCH',  r'.'),        # anything else
 ]
 
-# Pre-compile all patterns into one master regex
 MASTER_PATTERN = re.compile(
     '|'.join(f'(?P<{name}>{pattern})' for name, pattern in TOKEN_TYPES)
 )
