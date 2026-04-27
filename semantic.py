@@ -41,10 +41,10 @@ class SymbolTable:
         if not self._table:
             print("  (empty)")
         else:
-            print(f"  {'NAME':<15} {'TYPE':<10} {'DECLARED LINE'}")
+            print(f"  {'NAME':<15} {'TYPE':<10}")
             print("  " + "-" * 38)
             for sym in self._table.values():
-                print(f"  {sym.name:<15} {sym.dtype:<10} {sym.line}")
+                print(f"  {sym.name:<15} {sym.dtype:<10}")
         print("=" * 55)
 
 
