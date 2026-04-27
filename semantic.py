@@ -81,18 +81,18 @@ class SemanticAnalyzer:
         name = node.children[0].value
         if not self.symbol_table.lookup(name):
             msg = (f"  [Semantic Warning] Variable '{name}' assigned without "
-                   f"declaration. Auto-declaring as 'int' for demo.")
+                   f"declaration.")
             print(msg)
-            self.symbol_table.declare(name, 'int', 0)
+            self.errors.append(msg)
         for child in node.children[1:]:
             self._visit(child)
 
     def _check_use(self, node: ParseNode):
         name = node.value[3:-1]   # strip "ID(" and ")"
         if not self.symbol_table.lookup(name):
-            msg = f"  [Semantic Warning] Variable '{name}' not yet declared; auto-declaring."
+            msg = f"  [Semantic Warning] Variable '{name}' not yet declared;"
             print(msg)
-            self.symbol_table.declare(name, 'int', 0)
+            self.errors.append(msg)
 
 
 def run_semantic(tree: ParseNode) -> tuple[SymbolTable, list[str]]:
